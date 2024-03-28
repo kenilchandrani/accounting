@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart' as launcher;
 
+import 'Login.dart';
 import 'NavigatonBar.dart';
 
-class Dashboard extends StatelessWidget {
+class Dashboard extends StatefulWidget {
   Dashboard({super.key});
 
+  @override
+  State<Dashboard> createState() => _DashboardState();
+}
+
+class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +22,14 @@ class Dashboard extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Icon(Icons.help_center),
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
+                },
+                icon: Icon(Icons.arrow_circle_left))
           ],
         ),
       ),
@@ -232,7 +246,10 @@ class Dashboard extends StatelessWidget {
                     radius: 22,
                     backgroundColor: Color(0xffD5D5F0),
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        launcher.launchUrl(
+                            Uri.parse('https://wa.me/+919173039628'));
+                      },
                       icon: Icon(Icons.pages_rounded),
                     ),
                   ),
@@ -341,6 +358,15 @@ class Dashboard extends StatelessWidget {
       ),
     );
   }
+
+  // void launchWhatsApp() async {
+  //   String url = 'https://wa.me/+919173039628';
+  //   if (await canLaunch(url)) {
+  //     await launch(url);
+  //   } else {
+  //     throw 'Could not launch $url';
+  //   }
+  // }
 
   Container buildContainer1({required IconData iconData, required text}) {
     return Container(
