@@ -107,17 +107,6 @@ class _LoginPageState extends State<LoginPage> {
                                     border: OutlineInputBorder(),
                                   ),
                                 ),
-                                SizedBox(height: 5),
-                                TextField(
-                                  keyboardType: TextInputType.visiblePassword,
-                                  obscureText: true,
-                                  decoration: InputDecoration(
-                                    prefixIcon: Icon(Icons.lock),
-                                    hintText: "Enter Your Confirm Password",
-                                    prefixIconColor: Color(0xffB9BAC8),
-                                    border: OutlineInputBorder(),
-                                  ),
-                                ),
                               ],
                             ),
                           ),
